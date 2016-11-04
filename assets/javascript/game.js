@@ -1,7 +1,5 @@
 // Greg Gallant February 2016
-
 $( document ).ready(function() {
-//window.onload=function(){
 //setting up some local variables
 var football = ["texans","steelers","giants", "jets", "broncos", "panthers", "buccaneers", "bills", "dolphins", "patriots", "bengals", "browns", "ravens", "falcons","vikings", "packers", "lions","bears", "colts", "jaguars", "titans","cardinals","chiefs","raiders","chargers","saints","cowboys","eagles","redskins","rams","49ers","seahawks"];
 var totalWins = 0;//keeps track of all wins
@@ -21,15 +19,15 @@ var delay=3000;//3 seconds delay at end of game before a reset
 var winaudio = new Audio('assets/audio/nfltheme.mp3');//winner audio
 var loseaudio = new Audio('assets/audio/wronganswer.mp3');//loser audio
 var teamImages = "assets/images/teams/";//path to teams logo images
-var refPic = $('<img src=assets/images/refbw.gif>');
 
+var refPic = $('<img src=assets/images/refbw.gif>');
 $("#refPicLeft").append(refPic);
 $("#refPicRight").append(refPic)
 	
 	//This is an object containing methods (functions) that is used repeatedly.
 	var game = { 
 			startNewGame : function(){
-				$("#refPicLeft").hide();
+							$("#refPicLeft").hide();
 							$("#refPicRight").hide();
 							endOfGame = false;
 							reminders = "";
@@ -104,15 +102,16 @@ $("#refPicRight").append(refPic)
 							
 							document.querySelector('#letters').innerHTML = reminders;
 			},
+			
+			// jQuery used for the team logo image that is displayed at the end of each game.  JQuery is very useful for this!!!
 			showLogo : function(){
-				var pathToLogo = '<img src=' + teamImages +  targetWord +'.gif>'
+					var pathToLogo = '<img src=' + teamImages +  targetWord +'.gif>'
 					var pic = $(pathToLogo);
 					$("#jQuery-area").append(pic);
 			}
-	}
+	}//closes game object.
 						
-    // jQuery used for the team logo image that is displayed at the end of each game.  JQuery is very useful for this!!!
-    //$( document ).ready(function() {
+    
 			
 			//begin accepting keystrokes(keyup event)
 			document.onkeyup = function(event) {
@@ -166,8 +165,7 @@ $("#refPicRight").append(refPic)
 								}
 						}
 			}
-		//});
-//The game begins here, plays the NFL theme and calls the startNewGame function:
+//The game begins here. Plays the NFL theme and calls the startNewGame function:
 			winaudio.play();
 			game.startNewGame();
-});
+});//closes document.ready
