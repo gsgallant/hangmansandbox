@@ -1,7 +1,7 @@
 // Greg Gallant February 2016
 
-
-window.onload=function(){
+$( document ).ready(function() {
+//window.onload=function(){
 //setting up some local variables
 var football = ["texans","steelers","giants", "jets", "broncos", "panthers", "buccaneers", "bills", "dolphins", "patriots", "bengals", "browns", "ravens", "falcons","vikings", "packers", "lions","bears", "colts", "jaguars", "titans","cardinals","chiefs","raiders","chargers","saints","cowboys","eagles","redskins","rams","49ers","seahawks"];
 var totalWins = 0;//keeps track of all wins
@@ -103,22 +103,16 @@ $("#refPicRight").append(refPic)
 							"<p> Guesses used: " + guessesMade + "</p>" + "<p>"+ "Wrong guesses: " + usedLettersDisplay + "</p>"
 							
 							document.querySelector('#letters').innerHTML = reminders;
+			},
+			showLogo : function(){
+				var pathToLogo = '<img src=' + teamImages +  targetWord +'.gif>'
+					var pic = $(pathToLogo);
+					$("#jQuery-area").append(pic);
 			}
 	}
 						
     // jQuery used for the team logo image that is displayed at the end of each game.  JQuery is very useful for this!!!
-    $( document ).ready(function() {
-      function showLogo() { 
-      		
-      		var pathToLogo = '<img src=' + teamImages +  targetWord +'.gif>'
-					var pic = $(pathToLogo);
-					$("#jQuery-area").append(pic);
-        };
-	
-	
-		//The game begins here, plays the NFL theme and calls the startNewGame function:
-			winaudio.play();
-			game.startNewGame();
+    //$( document ).ready(function() {
 			
 			//begin accepting keystrokes(keyup event)
 			document.onkeyup = function(event) {
@@ -164,7 +158,7 @@ $("#refPicRight").append(refPic)
 								game.showReminders();
 								
 								if (endOfGame == true){
-									showLogo();
+									game.showLogo();
 									setTimeout(function(){
 									  game.startNewGame();
 									}, delay); 
@@ -172,5 +166,8 @@ $("#refPicRight").append(refPic)
 								}
 						}
 			}
-		});
-}
+		//});
+//The game begins here, plays the NFL theme and calls the startNewGame function:
+			winaudio.play();
+			game.startNewGame();
+});
