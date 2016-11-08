@@ -2,19 +2,19 @@
 $( document ).ready(function() {
 //setting up some local variables
 var football = ["texans","steelers","giants", "jets", "broncos", "panthers", "buccaneers", "bills", "dolphins", "patriots", "bengals", "browns", "ravens", "falcons","vikings", "packers", "lions","bears", "colts", "jaguars", "titans","cardinals","chiefs","raiders","chargers","saints","cowboys","eagles","redskins","rams","49ers","seahawks"];
-var totalWins = 0;//keeps track of all wins
-var totalLosses = 0;//tracks all losses
-var endOfGame = false;//flag for endOfGame to disallow extra key presses during 2 second delay for display of logo, reset values, etc.
-var reminders = "";// string containing all data such as guesses made, guesses allowed, etc.
-var targetWord = "";//this is the team that is selected randomly
-var maxGuessesAllowed = Math.floor(targetWord.length*1.8); //maximum allowed guesses calc by length of target word.
-var priorGuesses =[];//array holding all prior guesses
-var correctGuesses = 0;//correct number of guesses used to calculate if the end of game is a winner
-var guessesMade = 0;// total number of guesses made.
-var correctFlag = false;//a flag for keeping track of a correct guess so that the solution array can be updated
-var userGuess = "";//holds the keypress
-var solution = [];//holds underscores and correct letters during the game.
-var usedLettersDisplay = [];//holds the used letters during the game
+var totalWins=0;//keeps track of all wins
+var totalLosses=0;//tracks all losses
+var endOfGame;//flag for endOfGame to disallow extra key presses during 2 second delay for display of logo, reset values, etc.
+var reminders;// string containing all data such as guesses made, guesses allowed, etc.
+var targetWord;//this is the team that is selected randomly
+var maxGuessesAllowed; //maximum allowed guesses calc by length of target word.
+var priorGuesses;//array holding all prior guesses
+var correctGuesses;//correct number of guesses used to calculate if the end of game is a winner
+var guessesMade;// total number of guesses made.
+var correctFlag;//a flag for keeping track of a correct guess so that the solution array can be updated
+var userGuess;//holds the keypress
+var solution;//holds underscores and correct letters during the game.
+var usedLettersDisplay;//holds the used letters during the game
 var delay=3000;//3 seconds delay at end of game before a reset
 var winaudio = new Audio('assets/audio/nfltheme.mp3');//winner audio
 var loseaudio = new Audio('assets/audio/wronganswer.mp3');//loser audio
@@ -32,7 +32,6 @@ $("#refPicRight").append(refPic)
 							endOfGame = false;
 							reminders = "";
 							targetWord = football[Math.floor(Math.random() * football.length)];
-							maxGuessesAllowed = Math.floor(targetWord.length*1.8);
 							priorGuesses =[];
 							correctGuesses = 0;
 							guessesMade = 0;
@@ -47,7 +46,7 @@ $("#refPicRight").append(refPic)
 							//within the startNewGame function is the setup of the screen for the new game.
 							game.makeShowSolution();
 							game.showReminders();
-							$("#jQuery-area").empty();
+							$("#teamLogoArea").empty();
 							document.querySelector('#winOrLose').innerHTML = "Kickoff!";
 							document.getElementById('bkgrd').style.backgroundImage="url(assets/images/goalposts.png)";
 			},
@@ -107,7 +106,7 @@ $("#refPicRight").append(refPic)
 			showLogo : function(){
 					var pathToLogo = '<img src=' + teamImages +  targetWord +'.gif>'
 					var pic = $(pathToLogo);
-					$("#jQuery-area").append(pic);
+					$("#teamLogoArea").append(pic);
 			}
 	}//closes game object.
 						

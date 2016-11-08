@@ -39,7 +39,7 @@
 	#refPicRight{
 		position:relative;
 		top: -10px;
-		left: 1000px;
+		left: 1060px;
 		width: 1px;
 		max-height: 5px;
 
@@ -67,7 +67,7 @@
 		left:608px;
 	}
 
-	#jQuery-area{
+	#teamLogoArea{
 
 		position: fixed;
 		top:380px;
